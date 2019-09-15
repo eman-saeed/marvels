@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="marvel" type="com.example.marvels.model.Marvel"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                       xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                       xmlns:tools="http://schemas.android.com/tools"
+                                                       android:layout_width="match_parent"
+                                                       android:layout_height="wrap_content">
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:scaleType="fitXY"
+                android:background="@color/colorPrimaryDark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.0"
+                android:id="@+id/imageView"/>
+        <TextView
+                android:id="@+id/marvel_name"
+                tools:text="Hulk"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorAccent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintTop_toTopOf="@+id/imageView"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintVertical_bias="1.0"
+                android:layout_marginBottom="16dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

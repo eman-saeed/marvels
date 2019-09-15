@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="com.example.marvels.util.TextUtil"/>
+        <import type="android.view.View"/>
+        <variable name="detials" type="com.example.marvels.model.Results"/>
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".view.CharacterDetailsActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="40dp"
+                android:background="@color/colorPrimary">
+
+            <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/tool_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:navigationIcon="@drawable/ic_arrow_back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    android:layout_marginTop="24dp"></androidx.appcompat.widget.Toolbar>
+
+            <ImageView
+                    android:id="@+id/character_image_view"
+                    android:layout_width="match_parent"
+                    android:background="@color/colorPrimaryDark"
+                    tools:src="@mipmap/place_holder"
+                    android:scaleType="fitXY"
+                    android:layout_height="300dp" app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.0"/>
+
+            <TextView
+                    android:textColor="@color/colorAccent"
+                    tools:text="HULK"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:id="@+id/character_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/character_image_view"
+                    app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="1.0"/>
+
+            <TextView
+                    android:text="@string/description"
+                    android:textColor="@color/red"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/character_image_view"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="321dp" app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintVertical_bias="0.0" android:layout_marginStart="16dp"
+                    android:id="@+id/textView"/>
+
+            <TextView
+                    android:textColor="@color/colorAccent"
+                    tools:text="Rick Jones has been Hulk's best bud since day one, but now he's more than a friend...he's a teammate! Transformed by a Gamma energy explosion, A-Bomb's thick, armored skin is just as strong and powerful as it is blue. And when he curls into action, he uses it like a giant bowling ball of destruction!"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/textView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/textView2"/>
+
+            <TextView
+                    android:text="@string/comics"
+                    android:textColor="@color/red"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView2"
+                    app:layout_constraintVertical_bias="0.0" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="16dp" app:layout_constraintHorizontal_bias="0.0"
+                    android:id="@+id/comics_lbl"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/comics_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/comics_lbl"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="16dp"></androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                    android:text="@string/series"
+                    android:textColor="@color/red"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/comics_recycler_view"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintVertical_bias="0.0" app:layout_constraintHorizontal_bias="0.0"
+                    android:layout_marginStart="16dp" android:id="@+id/textView5"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/series_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="6dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintVertical_bias="0.0"></androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                    android:text="@string/stories"
+                    android:textColor="@color/red"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView4"
+                    app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/series_recycler_view"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintHorizontal_bias="0.0"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/stories_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="6dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintVertical_bias="0.0"></androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                    android:text="@string/events"
+                    android:textColor="@color/red"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView6"
+                    app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/stories_recycler_view"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintHorizontal_bias="0.0"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/events_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView6"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="6dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp"></androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                    android:text="@string/links"
+                    android:textColor="@color/red"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/events_recycler_view"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintHorizontal_bias="0.0" android:id="@+id/textView7"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/related_links_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="16dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="24dp"></androidx.recyclerview.widget.RecyclerView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
